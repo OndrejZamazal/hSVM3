@@ -3,8 +3,8 @@ hSVM3
 hSVM classifier as hierarchical Support Vector Machines classifier for classification DBpedia type for DBpedia entity.
 
 It returns:
-+ **hSVM dataset** - types of resources are DBpedia ontology classes built on hSVM algorithm
-+ **hSVMSTI dataset** - used for DBpedia 2015 release - types of resources are DBpedia ontology classes build on the a statistical type inference algorithm and hSVM algorithm (language independent)
++ **hSVM dataset** (res/hSVMSTI.nt.gz) - types of resources are DBpedia ontology classes built on hSVM algorithm
++ **hSVMSTI dataset** (res/hSVMSTI.nt.gz) - used for DBpedia 2015 release - types of resources are DBpedia ontology classes build on the a statistical type inference algorithm and hSVM algorithm (language independent)
 
 <!-- ## Usage binary release hSVMa: -->
 ## Requirements
@@ -62,5 +62,7 @@ hSVM will go through nine steps.
 7. preparing DBpedia and classification ontology
 8. preparing probability distribution for STI
 9. running hSVM
+
+The typed dataset is in res/hSVMSTI.nt.gz
 
 Steps 1 to 8 take approximately up to 1 hour. Step 9 for DBpedia 2016-05 takes approximately 24 hours.
