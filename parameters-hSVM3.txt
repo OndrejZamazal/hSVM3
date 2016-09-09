@@ -1,0 +1,16 @@
+min_instances_for_class|300
+#dataset to by typed - we only take entities from subject position
+dataset_to_type|/home/svabo/ner2/codes/DBpedia2016-04/enwiki-20160305-instance-types.ttl.bz2
+#dataset_to_type|/home/svabo/ner2/codes/hSVM-2016-04/test.nt
+#sti dataset to be integrated with hSVM if this is empty than we only compute hSVM output
+#sti_types_dataset|
+#sti_types_dataset|/home/ondrej/projects/LinkedTV/hSVM2/DBpedia2016-04/en.lhd.inference.2016-04.nt.gz
+sti_types_dataset|/home/qzemv01/LinkedHypernymsDataset/data/output_en/en.hypoutput.log.dbpedia.manualexclusion.nt.gz
+sti_inference_debug|/home/svabo/ner2/codes/DBpedia2016-04/en.sti.debug
+DBpedia_ontology|/home/svabo/ner2/codes/DBpedia2016-04/ontology.owl
+lang_short_abstracts|/home/svabo/ner2/codes/DBpedia2016-04/enwiki-20160305-short-abstracts.ttl.bz2
+lang_article_categories|/home/svabo/ner2/codes/DBpedia2016-04/enwiki-20160305-article-categories.ttl.bz2
+#for English non-transitive, for other languages transitive one:
+#lang_instance_types|/home/ondrej/projects/LinkedTV/hSVM2/DBpedia2016-04/enwiki-20160305-instance-types.ttl.bz2
+#newly for English and for other languages we have to use transitive:
+lang_instance_types|/home/svabo/ner2/codes/DBpedia2016-04/enwiki-20160305-instance-types-transitive.ttl.bz2
