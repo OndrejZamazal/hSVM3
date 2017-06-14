@@ -1,0 +1,8 @@
+min_instances_for_class|300
+dataset_to_type|/root/data/datasets/instance_types.ttl.bz2
+sti_types_dataset|/root/data/output/_LANG_.lhd.inference._VERSION_.nt.gz
+sti_inference_debug|/root/data/output/_LANG_.sti.debug
+DBpedia_ontology|/root/data/datasets/dbpedia.owl
+lang_short_abstracts|/root/data/datasets/short_abstracts.ttl.bz2
+lang_article_categories|/root/data/datasets/article_categories.ttl.bz2
+lang_instance_types|/root/data/datasets/instance_types_transitive.ttl.bz2
