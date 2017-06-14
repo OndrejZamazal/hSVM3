@@ -9,12 +9,11 @@ RUN echo 'deb http://http.debian.net/debian jessie-backports main' >> /etc/apt/s
     apt-get install -y -t jessie-backports openjdk-8-jdk && \
     apt-get install -y git maven curl wget && \
     update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java && \
-    mkdir data/datasets && \
-    mkdir data/output && \
-    mkdir data/templates
+    mkdir -p data/datasets && \
+    mkdir -p data/output && \
+    mkdir -p data/templates
 
-ADD parameters-hSVM3.txt data/templates
-ADD stopwords.en.txt data/datasets
+ADD *.txt data/templates/
 ADD *.sh ./
 
 RUN git clone https://github.com/propi/hSVM3.git && \

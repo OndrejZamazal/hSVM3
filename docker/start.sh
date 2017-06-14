@@ -1,8 +1,9 @@
 #!/bin/bash
 
-function dexists(dataset) {
-  if [ ! -f "$dataset" ]; then
-    echo "Dataset $dataset not found!"
+function dexists
+{
+  if [ ! -f "$1" ]; then
+    echo "Dataset $1 not found!"
     exit 1
   fi
 }
@@ -41,8 +42,10 @@ if [[ -z "$LANGUAGE" ]]; then
 fi
 
 STOPWORDS_FILE="stopwords.$LANGUAGE.txt"
-
-dexists("/root/data/datasets/$STOPWORDS_FILE")
+if [[ ! -f "/root/data/datasets/$STOPWORDS_FILE" && -f "/root/data/templates/$STOPWORDS_FILE" ]]; then
+  cp "/root/data/templates/$STOPWORDS_FILE" "/root/data/datasets/$STOPWORDS_FILE"
+fi
+dexists "/root/data/datasets/$STOPWORDS_FILE"
 
 cp "/root/data/datasets/$STOPWORDS_FILE" "/root/hSVM3/$STOPWORDS_FILE"
 cp $PARAMETERS_TEMPLATE $PARAMETERS
@@ -52,8 +55,9 @@ sed -i -- "s/_VERSION_/$VERSION/g" $PARAMETERS
 
 while IFS='|' read -r key value
 do
+value="$(echo -e "${value}" | sed -e 's/[[:space:]]*$//')"
 if [[ "$key" == "dataset_to_type" || "$key" == "DBpedia_ontology" || "$key" == "lang_short_abstracts" || "$key" == "lang_article_categories" || "$key" == "lang_instance_types" ]]; then
-  dexists($value)
+  dexists $value
 fi
 if [[ "$key" == "sti_types_dataset" || "$key" == "sti_inference_debug" ]]; then
   if [ ! -f "$value" ]; then
@@ -64,11 +68,11 @@ done < "$PARAMETERS"
 
 if [[ "$STI" == 0 ]]; then
   sed -i '/sti_types_dataset/c\sti_types_dataset|' $PARAMETERS
-  sed -i '/sti_inference_debug/c\sti_types_dataset|' $PARAMETERS
+  sed -i '/sti_inference_debug/c\sti_inference_debug|' $PARAMETERS
 fi
 
-#cd /root/hSVM3
+cd /root/hSVM3
 
-#mvn exec:java -Dexec.mainClass="cz.vse.swoe.linkedtv.hsvm.hSVMrun"
+mvn exec:java -Dexec.mainClass="cz.vse.swoe.linkedtv.hsvm.hSVMrun"
 
 #mv res/hSVMSTI.nt.gz /root/data/datasets

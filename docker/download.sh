@@ -78,6 +78,11 @@ if [[ -z "$DOWNLOAD_ARTICLE_CATEGORIES" ]]; then
 fi
 
 wget -O dbpedia.owl $DOWNLOAD_ONTOLOGY
+if [[ ! -s dbpedia.owl ]]; then
+  DOWNLOAD_ONTOLOGY="http://downloads.dbpedia.org/$VERSION/dbpedia_$VERSION.owl"
+  wget -O dbpedia.owl $DOWNLOAD_ONTOLOGY
+fi
+
 wget -O instance_types.ttl.bz2 $DOWNLOAD_INSTANCE_TYPES
 wget -O instance_types_transitive.ttl.bz2 $DOWNLOAD_INSTANCE_TYPES_TRANSITIVE
 wget -O short_abstracts.ttl.bz2 $DOWNLOAD_SHORT_ABSTRACTS
