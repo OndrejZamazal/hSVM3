@@ -95,4 +95,4 @@ cd /root/hSVM3
 
 mvn exec:java -Dexec.mainClass="cz.vse.swoe.linkedtv.hsvm.hSVMrun"
        
-mv res/hSVMSTI.nt.gz /root/data/datasets
+mv res/hSVMSTI.nt.gz /root/data/output
