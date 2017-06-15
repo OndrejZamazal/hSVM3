@@ -77,7 +77,8 @@ if [[ "$key" == "sti_types_dataset" || "$key" == "sti_inference_debug" ]]; then
     done
   fi
   if [[ -n "$LHD_SERVER" && "$key" == "sti_types_dataset" && $LHD_IS_READY == 1 ]]; then
-    gzip "$value" 
+    inference_dataset="$(echo -e "${value}" | sed -e 's/\.gz$//')"
+    gzip "$inference_dataset" 
   fi
   if [ ! -f "$value" ]; then
     STI=0

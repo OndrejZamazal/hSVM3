@@ -2,16 +2,13 @@ version: "3"
 services:
   lhd:
     build:
-      context: . #https://github.com/KIZI/LinkedHypernymsDataset.git#:docker
-      dockerfile: Dockerfile2
+      context: https://github.com/KIZI/LinkedHypernymsDataset.git#:docker
     container_name: lhd
     image: lhd:latest
-    #env_file: ${DATASETS}
-    #command: ${LANGUAGE} ${VERSION}
+    env_file: ${DATASETS}
+    command: ${LANGUAGE} ${VERSION}
     volumes:
-      - hsvm-output:/root/datasets
-    #volumes:
-    #  - hsvm-output:/root/LinkedHypernymsDataset/data/output
+      - hsvm-output:/root/LinkedHypernymsDataset/data/output
   hsvm:
     build:
        context: https://github.com/propi/hSVM3.git#:docker
