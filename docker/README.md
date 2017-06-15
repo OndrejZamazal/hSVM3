@@ -45,11 +45,10 @@ For better hSVM3 results you can optionally put LHD datasets into the main hSVM3
 2. Use docker-compose:
 
 ```
-LANGUAGE=en
-VERSION=2016-04
-DATASETS=<path-to-env-vars-file> # see https://github.com/KIZI/LinkedHypernymsDataset/tree/master/docker
-docker volume create hsvm-datasets
-docker volume create hsvm-output
-docker run --rm -v hsvm-datasets:/root/data/datasets -v hsvm-output:/root/data/output hsvm /root/download.sh -v=$VERSION -l=$LANGUAGE
-docker run -d --name hsvm -v hsvm-datasets:/root/data/datasets -v hsvm-output:/root/data/output hsvm /root/start.sh -v=$VERSION -l=$LANGUAGE
+export LANGUAGE=en
+export VERSION=2016-04
+export DATASETS=<path-to-env-vars-file> # see https://github.com/KIZI/LinkedHypernymsDataset/tree/master/docker
+docker-compose up -d hsvm
 ```
+
+This docker compose first runs the LHD extractor (this process can take several hours); after completion of it, hSVM3 process starts with results from the LHD extractor. The second part takes additional hours of computing time. As soon as the hSVM3 process ends, all results (LHD+hSVM3) will occur in the hsvm-output volume, which has been automatically created by docker compose.
