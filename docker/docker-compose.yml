@@ -9,7 +9,9 @@ services:
     #env_file: ${DATASETS}
     #command: ${LANGUAGE} ${VERSION}
     volumes:
-      - hsvm-output:/root/LinkedHypernymsDataset/data/output
+      - hsvm-output:/root/datasets
+    #volumes:
+    #  - hsvm-output:/root/LinkedHypernymsDataset/data/output
   hsvm:
     build:
        context: https://github.com/propi/hSVM3.git#:docker

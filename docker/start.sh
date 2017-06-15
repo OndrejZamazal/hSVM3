@@ -76,7 +76,7 @@ if [[ "$key" == "sti_types_dataset" || "$key" == "sti_inference_debug" ]]; then
       fi
     done
   fi
-  if [[ -n "$LHD_SERVER" && "$key" == "sti_types_dataset" && LHD_IS_READY == 1 ]]; then
+  if [[ -n "$LHD_SERVER" && "$key" == "sti_types_dataset" && $LHD_IS_READY == 1 ]]; then
     gzip "$value" 
   fi
   if [ ! -f "$value" ]; then
