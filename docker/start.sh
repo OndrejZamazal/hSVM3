@@ -70,7 +70,7 @@ if [[ "$key" == "sti_types_dataset" || "$key" == "sti_inference_debug" ]]; then
   if [[ -n "$LHD_SERVER" ]]; then
     while [[ $LHD_IS_READY == 0 ]]; do
       sleep 1m
-      ping -c 1 "$LHD_SERVER"
+      ping -c 1 "$LHD_SERVER" > /dev/null
       if [[ $? -gt 0 ]]; then
         LHD_IS_READY=1
       fi
