@@ -16,7 +16,7 @@ RUN echo 'deb http://http.debian.net/debian jessie-backports main' >> /etc/apt/s
 ADD *.txt data/templates/
 ADD *.sh ./
 
-RUN git clone https://github.com/propi/hSVM3.git && \
+RUN git clone https://github.com/OndrejZamazal/hSVM3.git && \
     chmod 755 *.sh
     
 WORKDIR hSVM3

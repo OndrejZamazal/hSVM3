@@ -11,7 +11,7 @@ services:
       - hsvm-output:/root/LinkedHypernymsDataset/data/output
   hsvm:
     build:
-       context: https://github.com/propi/hSVM3.git#:docker
+       context: https://github.com/OndrejZamazal/hSVM3.git#:docker
     container_name: hsvm
     image: hsvm:latest
     command: /bin/bash -c "/root/download.sh -v=${VERSION} -l=${LANGUAGE}; /root/start.sh -v=${VERSION} -l=${LANGUAGE} -lhd=lhd"
